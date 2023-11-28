@@ -21,7 +21,7 @@ services:
       DB_PORT: 3306
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_USER_PASS}
-      DB_NAME: 4{DB_DATABASE}
+      DB_NAME: ${DB_DATABASE}
     ports:
       - "3000:3000"
     volumes:
