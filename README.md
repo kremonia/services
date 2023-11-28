@@ -26,7 +26,7 @@ cd wikijs
 
 ...and execute:
 
-```docker
+```Dockerfile
 docker compose up -d
 ```
 
@@ -36,7 +36,7 @@ It would build and run 2 containers in isolated network. Default external port i
 
 To shutdown whole project just run within `wikijs` folder:
 
-```docker
+```Dockerfile
 docker compose stop
 ```
 
@@ -61,7 +61,7 @@ cd gogs
 
 ...and execute:
 
-```docker
+```Dockerfile
 docker compose up -d
 ```
 
@@ -71,7 +71,7 @@ It would build and run 2 containers in isolated network. Default external port i
 
 To shutdown whole project just run within `gogs` folder:
 
-```docker
+```Dockerfile
 docker compose stop
 ```
 
@@ -79,6 +79,6 @@ docker compose stop
 
 > ⚡ Important: running this command would destroy `Docker` containers and networks. Use volumes to keep your data.
 
-```docker
+```Dockerfile
 docker compose down
 ```
