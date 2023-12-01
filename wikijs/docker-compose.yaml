@@ -1,0 +1,40 @@
+version: "3"
+services:
+
+  db:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_USER_PASS}
+    networks:
+      gogs-net:
+        ipv4_address: 10.7.0.2
+
+  wiki:
+    image: ghcr.io/requarks/wiki:2
+    depends_on:
+      - db
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_USER_PASS}
+      DB_NAME: ${DB_DATABASE}
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+
+networks:
+  gogs-net:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.7.0.0/16
+         gateway: 10.7.0.1
+
+volumes:
+  db-data:
