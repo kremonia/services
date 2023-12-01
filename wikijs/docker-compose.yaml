@@ -17,8 +17,8 @@ services:
   wiki:
     image: ghcr.io/requarks/wiki:2
     restart: always
-    volumes:
-      - wiki-data:/wiki/data/content
+    # volumes:
+    #   - wiki-data:/wiki/data/content
     environment:
       DB_TYPE: postgres
       DB_HOST: db
@@ -46,4 +46,4 @@ networks:
 
 volumes:
   db-data:
-  wiki-data:
+  # wiki-data:
