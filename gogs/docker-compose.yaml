@@ -30,7 +30,7 @@ services:
       - "./config/app.ini:/data/gogs/conf/app.ini"
     ports:
       - "3022:22"
-      - "3000:3000"
+      - "3001:3000"
     links:
       - db
     depends_on:

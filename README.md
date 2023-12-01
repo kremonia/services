@@ -6,7 +6,7 @@ Docker compose project to run required infrastructure including wiki.js as a mai
 
 ## TODO
 
-- [ ] Add docker volumes for `Wiki.js` and `Gogs`
+- [x] Add docker volumes for `Wiki.js` and `Gogs`
 - [ ] Add `OpenProject` to manage projects.
 
 ## Usage
