@@ -1,0 +1,52 @@
+# services (c) by Alexander Cheorny
+# 
+# services is licensed under a
+# Creative Commons Attribution-NoDerivatives 4.0 International License.
+# 
+# You should have received a copy of the license along with this
+# work. If not, see <http://creativecommons.org/licenses/by-nd/4.0/>.
+
+version: "3"
+
+services:
+
+  db:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_USER_PASS}
+    networks:
+      gogs-net:
+        ipv4_address: 10.5.0.2
+
+  gogs:
+    image: gogs/gogs
+    restart: always
+    volumes:
+      - gogs-data:/data
+      - "./config/app.ini:/data/gogs/conf/app.ini"
+    ports:
+      - "3022:22"
+      - "3000:3000"
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      gogs-net:
+        ipv4_address: 10.5.0.3
+
+networks:
+  gogs-net:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1
+
+volumes:
+  db-data:
+  gogs-data:
