@@ -100,7 +100,7 @@ cd openproject
 docker compose up -d
 ```
 
-It would build and run several containers in isolated networks. Default external port is `3002` for `http` (frontend).
+It would build and run several containers in isolated networks. Default external port is `8080` for `http` (frontend).
 
 ### Shutdown
 
