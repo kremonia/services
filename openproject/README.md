@@ -4,24 +4,34 @@
 
 Clone this repository:
 
-    git clone https://github.com/opf/openproject-deploy --depth=1 --branch=stable/12 openproject
+```bash
+git clone https://github.com/opf/openproject-deploy --depth=1 --branch=stable/12 openproject
+```
 
 Go to the compose folder: 
 
-    cd openproject/compose
+```bash
+cd openproject/compose
+```
 
 Make sure you are using the latest version of the Docker images:
 
-    docker-compose pull
+```bash
+docker-compose pull
+```
 
 Copy the example `.env` file and edit any values you want to change:
 
-    cp .env.example .env
-    vim .env
+```bash
+cp .env.example .env
+vim .env
+```
 
 Launch the containers:
 
-    docker-compose up -d
+```bash
+docker-compose up -d
+```
 
 After a while, OpenProject should be up and running on <http://localhost:8080>.
 

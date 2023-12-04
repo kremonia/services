@@ -52,7 +52,7 @@ services:
     <<: [*image, *restart_policy]
     command: "./docker/prod/proxy"
     ports:
-      - "${PORT:-8080}:80"
+      - "${PORT:-3002}:80"
     environment:
       APP_HOST: web
       OPENPROJECT_RAILS__RELATIVE__URL__ROOT: "${OPENPROJECT_RAILS__RELATIVE__URL__ROOT:-}"
@@ -111,7 +111,7 @@ services:
 
   seeder:
     <<: *app
-    command: "./docker/prod/seeder"
+    command: "./docker/prod/seeder && rails runner \"::Projects::ScheduleDeletionService.new(user: User.admin.active.first, model: Project.find('your-scrum-project')).call; ::Projects::ScheduleDeletionService.new(user: User.admin.active.first, model: Project.find('demo-project')).call\""
     restart: on-failure
     networks:
       - backend
